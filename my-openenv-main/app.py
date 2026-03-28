@@ -157,6 +157,140 @@ def load_css():
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         color: white !important;
     }}
+
+    /* ─── Text Input / Number Input ─── */
+    .stTextInput > div > div > input,
+    .stNumberInput > div > div > input,
+    .stNumberInput input,
+    .stTextInput input,
+    div[data-testid="stNumberInput"] input,
+    div[data-testid="stTextInput"] input,
+    input[type="number"],
+    input[type="text"],
+    div[data-baseweb="input"] input {{
+        background: {"rgba(25,25,50,0.65)" if theme == "dark" else "rgba(255,255,255,0.95)"} !important;
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+        border: 1px solid {"rgba(100,100,200,0.2)" if theme == "dark" else "rgba(0,0,0,0.15)"} !important;
+        border-radius: 12px !important;
+        -webkit-text-fill-color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+    /* Number input wrapper background */
+    .stNumberInput > div > div,
+    div[data-testid="stNumberInput"] > div > div,
+    div[data-baseweb="input"] {{
+        background: {"rgba(25,25,50,0.65)" if theme == "dark" else "rgba(255,255,255,0.95)"} !important;
+        border-radius: 12px !important;
+    }}
+    .stTextInput > div > div > input::placeholder {{
+        color: {"#6868a8" if theme == "dark" else "#9999bb"} !important;
+    }}
+
+    /* ─── Radio Button Labels ─── */
+    .stRadio > div > div > label,
+    .stRadio > div > div > label > div,
+    .stRadio > div > div > label > div > p,
+    .stRadio > div > div > label span {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+    .stRadio > div {{
+        background: {"rgba(25,25,50,0.3)" if theme == "dark" else "rgba(255,255,255,0.5)"} !important;
+        border-radius: 12px !important;
+        padding: 4px 8px !important;
+    }}
+
+    /* ─── Checkbox Labels ─── */
+    .stCheckbox > label > span {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Selectbox: selected value text inside the widget ─── */
+    div[data-baseweb="select"] span,
+    div[data-baseweb="select"] div[class*="valueContainer"] *,
+    div[data-baseweb="select"] div[class*="singleValue"],
+    .stSelectbox div[data-baseweb="select"] * {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Selectbox: dropdown arrow icon ─── */
+    div[data-baseweb="select"] svg {{
+        fill: {"#a8a8c8" if theme == "dark" else "#4a4a6a"} !important;
+    }}
+
+    /* ─── Number input +/- buttons ─── */
+    .stNumberInput > div > div > div > button,
+    .stNumberInput button,
+    div[data-testid="stNumberInput"] button,
+    div[data-baseweb="input"] button,
+    .stNumberInput [data-testid="stNumberInputStepUp"],
+    .stNumberInput [data-testid="stNumberInputStepDown"] {{
+        background: {"rgba(25,25,50,0.5)" if theme == "dark" else "rgba(0,0,0,0.05)"} !important;
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+        border-color: {"rgba(100,100,200,0.2)" if theme == "dark" else "rgba(0,0,0,0.1)"} !important;
+    }}
+    /* Target the SVG icons specifically to make them dark in light mode */
+    .stNumberInput button svg,
+    div[data-baseweb="input"] button svg,
+    .stNumberInput [data-testid="stNumberInputStepUp"] svg,
+    .stNumberInput [data-testid="stNumberInputStepDown"] svg {{
+        fill: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Slider: value label and tick text ─── */
+    .stSlider > div > div > div > div,
+    .stSlider label > div,
+    .stSlider [data-testid="stTickBarMin"],
+    .stSlider [data-testid="stTickBarMax"],
+    div[data-baseweb="slider"] div[role="slider"]::after {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Sidebar widget labels (selectbox, slider, radio, etc.) ─── */
+    .stSidebar label,
+    .stSidebar .stSelectbox label,
+    .stSidebar .stSlider label,
+    .stSidebar .stRadio label,
+    .stSidebar .stNumberInput label,
+    .stSidebar .stTextInput label,
+    .stSidebar [data-testid="stWidgetLabel"],
+    .stSidebar [data-testid="stWidgetLabel"] p {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Sidebar section headers (#### markdown) ─── */
+    .stSidebar h4, .stSidebar h3, .stSidebar h5,
+    .stSidebar strong, .stSidebar b {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Help tooltip text ─── */
+    div[data-baseweb="tooltip"] {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Disabled button text visibility ─── */
+    .stButton > button:disabled {{
+        background: {"rgba(40,40,70,0.4)" if theme == "dark" else "rgba(200,200,220,0.5)"} !important;
+        color: {"#6868a8" if theme == "dark" else "#8888aa"} !important;
+        box-shadow: none !important;
+    }}
+
+    /* ─── Info/Warning/Error boxes ─── */
+    .stAlert {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"} !important;
+    }}
+
+    /* ─── Sidebar overall text elements ─── */
+    section[data-testid="stSidebar"] * {{
+        color: {"#e8e8f0" if theme == "dark" else "#1a1a2e"};
+    }}
+    section[data-testid="stSidebar"] .stButton > button {{
+        color: white !important;
+    }}
+    section[data-testid="stSidebar"] .stButton > button:disabled {{
+        color: {"#6868a8" if theme == "dark" else "#8888aa"} !important;
+    }}
+
     </style>
     """, unsafe_allow_html=True)
 
@@ -312,17 +446,24 @@ def create_timeline_chart(history: list, theme: str):
             xanchor="right", x=1,
             font=dict(size=11),
         ),
-        margin=dict(l=20, r=20, t=30, b=30),
+        margin=dict(l=50, r=20, t=30, b=30),
         height=350,
         xaxis=dict(
             title="Step", gridcolor=grid, zerolinecolor=grid,
             showgrid=True, gridwidth=1,
         ),
         yaxis=dict(
-            title="Value", gridcolor=grid, zerolinecolor=grid,
+            title=dict(text="Value", standoff=15),
+            gridcolor=grid, zerolinecolor=grid,
             showgrid=True, gridwidth=1,
         ),
         hovermode="x unified",
+        hoverlabel=dict(
+            bgcolor="rgba(20,20,40,0.95)" if theme == "dark" else "rgba(255,255,255,0.95)",
+            font_color="#e8e8f0" if theme == "dark" else "#1a1a2e",
+            bordercolor="rgba(100,100,200,0.3)" if theme == "dark" else "rgba(0,0,0,0.1)",
+            font_size=12,
+        ),
     )
 
     return fig
@@ -361,11 +502,18 @@ def create_reward_chart(rewards: list, theme: str):
         plot_bgcolor=bg, paper_bgcolor=bg,
         font=dict(color=text_color, family="Inter"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-        margin=dict(l=20, r=20, t=30, b=30),
+        margin=dict(l=50, r=20, t=30, b=30),
         height=300,
         xaxis=dict(title="Step", gridcolor=grid, showgrid=True),
-        yaxis=dict(title="Reward", gridcolor=grid, showgrid=True),
+        yaxis=dict(title=dict(text="Reward", standoff=15), gridcolor=grid, showgrid=True),
         barmode="overlay",
+        hovermode="x unified",
+        hoverlabel=dict(
+            bgcolor="rgba(20,20,40,0.95)" if theme == "dark" else "rgba(255,255,255,0.95)",
+            font_color="#e8e8f0" if theme == "dark" else "#1a1a2e",
+            bordercolor="rgba(100,100,200,0.3)" if theme == "dark" else "rgba(0,0,0,0.1)",
+            font_size=12,
+        ),
     )
     return fig
 
@@ -704,7 +852,7 @@ def render_main():
     with tab1:
         fig = create_timeline_chart(st.session_state.history, theme)
         if fig:
-            st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+            st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False}, theme=None)
         else:
             st.info("Run the simulation to see timeline data.")
 
@@ -752,7 +900,7 @@ def render_main():
     with tab4:
         fig = create_reward_chart(st.session_state.reward_history, theme)
         if fig:
-            st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+            st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False}, theme=None)
         else:
             st.info("Run the simulation to see reward data.")
 
@@ -800,7 +948,7 @@ def render_main():
                 title=dict(text="Action Distribution", font=dict(size=14)),
             )
             st.plotly_chart(fig, use_container_width=True,
-                          config={"displayModeBar": False})
+                          config={"displayModeBar": False}, theme=None)
 
     # Done message
     if st.session_state.sim_done:
