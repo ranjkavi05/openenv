@@ -289,8 +289,13 @@ class LifeSimulatorEnv:
         return self.state(), round(reward, 4), self._done, info
 
     def state(self) -> Dict[str, Any]:
-        """Return the current observation as a plain dictionary."""
-        return self._state.to_dict()
+        """Return the current observation as a plain dictionary (filtered for OpenEnv compliance)."""
+        full_state = self._state.to_dict()
+        # Return only the keys defined in the openenv.yaml observation space
+        return {
+            k: v for k, v in full_state.items() 
+            if k in ["age", "health", "money", "stress", "career", "relationships", "happiness"]
+        }
 
     # ─────────────────────────────────────────
     #  Action Application
