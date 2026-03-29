@@ -10,6 +10,13 @@ app = FastAPI(title="OpenEnv LifeOS ✨ API")
 # Global env instance for evaluation
 env_instance: Optional[LifeSimulatorEnv] = None
 
+@app.get("/")
+def home():
+    return {
+        "status": "online", 
+        "message": "LifeOS ✨ API is running! Access /docs for endpoint details. Ready for OpenEnv Grading."
+    }
+
 class ResetRequest(BaseModel):
     task_type: str = "perfect_balance"
     personality: str = "balanced"

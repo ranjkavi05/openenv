@@ -309,8 +309,8 @@ def main() -> None:
     """Main inference entry point - runs all 3 required tasks."""
     start_time = time.time()
 
-    print("=" * 60)
-    print("  AI DIGITAL LIFE SIMULATOR - Inference Script")
+    print("============================================================")
+    print("  LifeOS ✨ - Inference Script")
     print("=" * 60)
     print(
         f"  API_BASE_URL : {API_BASE_URL[:40]}..."

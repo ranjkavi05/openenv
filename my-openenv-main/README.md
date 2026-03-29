@@ -212,7 +212,7 @@ Probabilistic life events that affect multiple variables:
 
 ```
 ============================================================
-  AI DIGITAL LIFE SIMULATOR - Inference Script
+  LifeOS ✨ - Inference Script
 ============================================================
   API_BASE_URL : https://api-inference.huggingface.co/v1
   MODEL_NAME   : meta-llama/Meta-Llama-3-8B-Instruct

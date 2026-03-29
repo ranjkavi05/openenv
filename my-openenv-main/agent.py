@@ -145,8 +145,8 @@ def run_simulation(
     state = env.reset()
 
     if verbose:
-        print("=" * 60)
-        print("  AI DIGITAL LIFE SIMULATOR  —  Baseline Agent")
+        print("============================================================")
+        print("  LifeOS ✨  —  Baseline Agent")
         print("=" * 60)
         print(f"  Task Goal   : {task_type.value}")
         print(f"  Personality : {personality.value}")
