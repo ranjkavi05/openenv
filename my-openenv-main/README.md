@@ -3,9 +3,7 @@ title: LifeOS ✨ 🌌
 emoji: 🌌
 colorFrom: indigo
 colorTo: purple
-sdk: streamlit
-sdk_version: 1.30.0
-app_file: app.py
+sdk: docker
 pinned: false
 ---
 
@@ -56,6 +54,7 @@ Real-life decisions are interconnected — working overtime earns money but cost
 | 🤖 **Baseline Agent** | Rule-based AI with decision explanations |
 | 🧠 **LLM-Powered Agent** | OpenAI-compatible LLM agent via `inference.py` |
 | 🎨 **Stunning Dashboard** | Glassmorphism UI with dark/light mode, Plotly charts |
+| ✨ **Neon OS Aesthetic** | Custom cyberpunk gradient typography and responsive sidebar |
 | 🚀 **One-Command Deploy** | Docker + Hugging Face Spaces ready |
 
 ---
@@ -263,9 +262,10 @@ docker run -p 8000:8000 -p 8501:8501 life-sim
 ### Hugging Face Spaces
 
 1. Create a new Space on [huggingface.co/spaces](https://huggingface.co/spaces)
-2. Select **Streamlit** as the SDK
-3. Upload all project files (ensure `app.py` is in the root)
-4. The Space will automatically build and deploy using the metadata provided in this README.
+2. **Important:** Select **Docker** as the SDK (Do NOT select Streamlit). 
+   - *Why?* If you select Streamlit, Hugging Face will only run the UI dashboard and will ignore the FastAPI server, causing your OpenEnv automated grading API to fail. By selecting Docker, Hugging Face will run the provided `Dockerfile` which launches both the API and the UI concurrently via `start.sh`.
+3. Upload all project files to the repository.
+4. The Space will automatically build and deploy the container.
 
 ---
 
