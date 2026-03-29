@@ -44,7 +44,7 @@ Real-life decisions are interconnected — working overtime earns money but cost
 
 | Feature | Description |
 |---------|-------------|
-| 🎯 **OpenEnv Compatible** | Standard `reset()` / `step()` / `state()` interface |
+| 🎯 **OpenEnv API Compliant** | FastAPI server with `/reset` & `/step` endpoints |
 | 🧠 **6 Actions** | Work, Exercise, Invest, Learn, Socialize, Rest |
 | 📊 **7 State Variables** | Age, Health, Money, Stress, Career, Relationships, Happiness |
 | 🏆 **3 Distinct Tasks** | Wealth Builder (Easy), Career Climber (Medium), Perfect Balance (Hard) |
@@ -68,10 +68,10 @@ Real-life decisions are interconnected — working overtime earns money but cost
 │         LLM Agent ← OpenAI Client (API_BASE_URL,            │
 │                      MODEL_NAME, HF_TOKEN)                  │
 ├─────────────────────────────────────────────────────────────┤
-│                        app.py (UI)                           │
+│                api.py (FastAPI) & app.py (UI)                │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌───────────────┐  │
-│  │ Metrics  │ │ Timeline │ │  Events  │ │ AI Decisions  │  │
-│  │  Cards   │ │  Chart   │ │   Feed   │ │    Panel      │  │
+│  │ /reset   │ │ /step    │ │ /state   │ │   Dashboard   │  │
+│  │ Endpoint │ │ Endpoint │ │ Endpoint │ │     UI        │  │
 │  └──────────┘ └──────────┘ └──────────┘ └───────────────┘  │
 ├─────────────────────────────────────────────────────────────┤
 │                      env.py (Core)                           │
@@ -134,14 +134,23 @@ python inference.py
 
 This runs all 3 tasks (`wealth_builder`, `career_climber`, `perfect_balance`) using the LLM-powered agent via the OpenAI Client, producing grader scores in the 0.0–1.0 range.
 
-### Run the Dashboard
+### Run the Server and Dashboard
+
+The latest version includes a FastAPI server for strict OpenEnv compliance.
 
 ```bash
-# From the project root
+# On Linux / macOS (runs both API and Streamlit)
+./start.sh
+
+# On Windows (use two separate terminals)
+# Terminal 1: Launch the API
+uvicorn api:app --port 8000
+# Terminal 2: Launch the dashboard
 streamlit run app.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501) in your browser.
+- **Dashboard:** [http://localhost:8501](http://localhost:8501)
+- **API Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ### Run the Baseline Agent (Terminal)
 
@@ -248,7 +257,7 @@ Probabilistic life events that affect multiple variables:
 ```bash
 # From the project root
 docker build -t life-sim .
-docker run -p 8501:8501 life-sim
+docker run -p 8000:8000 -p 8501:8501 life-sim
 ```
 
 ### Hugging Face Spaces
@@ -265,6 +274,8 @@ docker run -p 8501:8501 life-sim
 ```
 OpenEnv_Soln/
 ├── inference.py        # ** Main inference script (required for submission) **
+├── api.py              # FastAPI server (OpenEnv REST compliance)
+├── start.sh            # Launch script for API & UI
 ├── app.py              # Streamlit UI dashboard
 ├── env.py              # Core environment (reset/step/state)
 ├── models.py           # Data models, enums, dataclasses
@@ -288,6 +299,7 @@ OpenEnv_Soln/
 
 - **Python 3.11** — Core language
 - **OpenAI Client** — LLM-based agent decisions (via `API_BASE_URL`, `MODEL_NAME`, `HF_TOKEN`)
+- **FastAPI / Uvicorn** — Backend REST API providing `/reset` and `/step`
 - **Streamlit** — Interactive web dashboard
 - **Plotly** — Beautiful interactive charts
 - **CSS3** — Glassmorphism, animations, theming
